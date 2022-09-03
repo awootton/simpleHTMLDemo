@@ -1,0 +1,58 @@
+<HTML>
+
+<HEAD>
+    <TITLE>Your Title Here</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+    hello world
+    <canvas id="myCanvas" width="512" height="512"></canvas>
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        var myVar = setInterval(myTimer, 10);
+        var stars = new Array();
+        var mid = 256;
+
+        function myTimer() {
+            console.log(stars.length)
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(0, 0, 512, 512);
+            ctx.fillStyle = "#FFFFFF";
+            for (i = 0; i < 1000; i++) {
+                if (stars.length <= i) {
+                    star = {
+                        x: 0,
+                        y: 0,
+                        z: 0
+                    }
+                    stars[i] = star;
+                }
+                star = stars[i]
+                xt = star.x / star.z + mid
+                yt = star.y / star.z + mid
+                size = 0.2 + 1 / 400 / star.z
+
+                if (size >= 2.0) {
+                    ctx.beginPath();
+                    ctx.arc(xt + size / 2, yt + size / 2, size, 0, 2 * Math.PI, false);
+                    ctx.fillStyle = 'white';
+                    ctx.fill();
+                } else {
+                    ctx.fillRect(xt, yt, size, size);
+                }
+
+                star.z = star.z - 1 / 50000
+
+                if (xt < 0 || xt >= 512 || yt < 0 || yt >= 512 || star.z <= 0) {
+                    star.x = 2 * Math.random() - 1
+                    star.y = 2 * Math.random() - 1
+                    star.z = Math.random() / 100
+                }
+            }
+        }
+    </script>
+
+</BODY>
+
+</HTML>
