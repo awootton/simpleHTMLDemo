@@ -6,18 +6,18 @@
 
 <BODY BGCOLOR="FFFFFF">
     hello world
-    <canvas id="myCanvas" width="512" height="512"></canvas>
+    <canvas id="myCanvas" width="1024" height="1024"></canvas>
     <script>
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
         var myVar = setInterval(myTimer, 10);
         var stars = new Array();
-        var mid = 256;
+        var mid = 512;
 
         function myTimer() {
             console.log(stars.length)
             ctx.fillStyle = "#000000";
-            ctx.fillRect(0, 0, 512, 512);
+            ctx.fillRect(0, 0, 1024, 1024);
             ctx.fillStyle = "#FFFFFF";
             for (i = 0; i < 1000; i++) {
                 if (stars.length <= i) {
@@ -44,7 +44,7 @@
 
                 star.z = star.z - 1 / 50000
 
-                if (xt < 0 || xt >= 512 || yt < 0 || yt >= 512 || star.z <= 0) {
+                if (xt < 0 || xt >= 1024 || yt < 0 || yt >= 1024 || star.z <= 0) {
                     star.x = 2 * Math.random() - 1
                     star.y = 2 * Math.random() - 1
                     star.z = Math.random() / 100
