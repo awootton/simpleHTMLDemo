@@ -3,5 +3,5 @@ A simple html project
 
 looks like this:
 
-https://github.com/awootton/simpleHTMLDemo/blob/main/index.html
+https://awootton.github.io/simpleHTMLDemo
 
